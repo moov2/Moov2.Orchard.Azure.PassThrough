@@ -5,6 +5,7 @@ using Orchard.Environment.Extensions;
 using Orchard.FileSystems.Media;
 using System;
 using System.IO;
+using System.Web;
 using System.Web.Hosting;
 
 namespace Moov2.Orchard.Azure.PassThrough.Services.FileSystems.Media
@@ -50,6 +51,21 @@ namespace Moov2.Orchard.Azure.PassThrough.Services.FileSystems.Media
         {
             path = ConvertToRelativeUriPath(path);
             return string.IsNullOrEmpty(path) ? _publicPath : Path.Combine(_publicPath, path).Replace(Path.DirectorySeparatorChar, '/').Replace(" ", "%20");
+        }
+
+        public new string GetStoragePath(string url)
+        {
+            var baseResult = base.GetStoragePath(url);
+            if (baseResult != null)
+            {
+                return baseResult;
+            }
+            if (url != null && url.StartsWith(_publicPath, StringComparison.OrdinalIgnoreCase))
+            {
+                return HttpUtility.UrlDecode(url.Substring(Combine(_publicPath, "/").Length));
+            }
+
+            return null;
         }
 
         private static string ConvertToRelativeUriPath(string path)

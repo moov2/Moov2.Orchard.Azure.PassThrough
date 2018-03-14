@@ -55,14 +55,22 @@ namespace Moov2.Orchard.Azure.PassThrough.Services.FileSystems.Media
 
         public new string GetStoragePath(string url)
         {
-            var baseResult = base.GetStoragePath(url);
-            if (baseResult != null)
+            // If the underlying azure file system isn't initialized this will be null
+            if (_absoluteRoot != null)
             {
-                return baseResult;
+                var baseResult = base.GetStoragePath(url);
+                if (baseResult != null)
+                {
+                    return baseResult;
+                }
             }
             if (url != null && url.StartsWith(_publicPath, StringComparison.OrdinalIgnoreCase))
             {
                 return HttpUtility.UrlDecode(url.Substring(Combine(_publicPath, "/").Length));
+            }
+            if (url != null && url.StartsWith(_root, StringComparison.OrdinalIgnoreCase))
+            {
+                return HttpUtility.UrlDecode(url.Substring(Combine(_root, "/").Length));
             }
 
             return null;

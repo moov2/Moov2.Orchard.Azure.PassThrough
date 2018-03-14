@@ -1,6 +1,6 @@
-﻿using Moov2.Orchard.Azure.PassThrough.Services.FileSystems;
-using Orchard.Environment.Extensions;
+﻿using Orchard.Environment.Extensions;
 using Orchard.FileSystems.Media;
+using Orchard.Security;
 using System.Web.Mvc;
 
 namespace Moov2.Orchard.Azure.PassThrough.Controllers
@@ -8,18 +8,22 @@ namespace Moov2.Orchard.Azure.PassThrough.Controllers
     [OrchardFeature(Constants.PassThroughMediaFeatureName)]
     public class MediaController : Controller
     {
-        private readonly IMediaPathProcessor _mediaPathProcessor;
+        private readonly IAuthorizer _authorizer;
         private readonly IStorageProvider _storageProvider;
 
-        public MediaController(IMediaPathProcessor mediaPathProcessor, IStorageProvider storageProvider)
+        public MediaController(IAuthorizer authorizer, IStorageProvider storageProvider)
         {
-            _mediaPathProcessor = mediaPathProcessor;
+            _authorizer = authorizer;
             _storageProvider = storageProvider;
         }
 
         public ActionResult Index(string mediaPath)
         {
-            mediaPath = _mediaPathProcessor.CleanPath(mediaPath);
+            if (!_authorizer.Authorize(Permissions.ViewSecureMedia))
+            {
+                return HttpNotFound();
+            }
+            mediaPath = _storageProvider.GetStoragePath(mediaPath);
             if (!_storageProvider.FileExists(mediaPath))
             {
                 return HttpNotFound();

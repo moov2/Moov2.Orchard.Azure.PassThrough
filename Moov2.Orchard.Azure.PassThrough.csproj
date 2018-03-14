@@ -100,8 +100,6 @@
     <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Permissions.cs" />
     <Compile Include="Routes.cs" />
-    <Compile Include="Services\FileSystems\AzureMediaPathProcessor.cs" />
-    <Compile Include="Services\FileSystems\IMediaPathProcessor.cs" />
     <Compile Include="Services\FileSystems\Media\SecuredAzureBlobStorageProvider.cs" />
   </ItemGroup>
   <PropertyGroup>

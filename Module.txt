@@ -8,7 +8,7 @@ Description: Enhances the Orchard.Azure module with additional security features
 Category: Hosting
 Features:
     Moov2.Orchard.Azure.Media.Passthrough:
-        Name: Microsoft Azure Media Storage Pass Through
+        Name: Microsoft Azure Media Storage Pass-Through
         Description: Applies security restrictions to Orchard media storage provider that targets Microsoft Azure Blob Storage. Media requests pass through Orchard so they can be checked for required permission, this allows blob storage to be set to private.
-        Dependencies: Orchard.Azure.Media, Moov2 Orchard Azure Pass-Through
+        Dependencies: Orchard.Azure.Media, Moov2.Orchard.Azure.PassThrough
         Category: Hosting

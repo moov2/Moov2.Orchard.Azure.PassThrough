@@ -1,0 +1,14 @@
+﻿Name: Moov2 Orchard Azure Pass-Through
+AntiForgery: enabled
+Author: Moov2
+Website: https://github.com/moov2/Moov2.Orchard.Azure.PassThrough
+Version: 0.1
+OrchardVersion: 1.9.2
+Description: Enhances the Orchard.Azure module with additional security features using a pass-through approach
+Category: Hosting
+Features:
+    Moov2.Orchard.Azure.Media.Passthrough:
+        Name: Microsoft Azure Media Storage Pass Through
+        Description: Applies security restrictions to Orchard media storage provider that targets Microsoft Azure Blob Storage. Media requests pass through Orchard so they can be checked for required permission, this allows blob storage to be set to private.
+        Dependencies: Orchard.Azure.Media, Moov2 Orchard Azure Pass-Through
+        Category: Hosting

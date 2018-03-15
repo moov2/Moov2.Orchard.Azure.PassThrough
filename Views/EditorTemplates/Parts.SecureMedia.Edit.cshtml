@@ -1,0 +1,6 @@
+﻿@model Moov2.Orchard.Azure.PassThrough.Models.SecureMediaPart
+
+<fieldset>
+    @Html.EditorFor(m => m.IsSecure)
+    <label for="@Html.FieldIdFor(m => m.IsSecure)" class="forcheckbox">@T("Is Secure")</label>
+</fieldset>

@@ -98,9 +98,18 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Drivers\SecureMediaPartDriver.cs" />
+    <Compile Include="Migrations.cs" />
+    <Compile Include="Models\SecureMediaPart.cs" />
     <Compile Include="Permissions.cs" />
     <Compile Include="Routes.cs" />
     <Compile Include="Services\FileSystems\Media\SecuredAzureBlobStorageProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Placement.info" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts.SecureMedia.Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

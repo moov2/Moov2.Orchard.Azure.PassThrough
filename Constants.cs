@@ -2,6 +2,6 @@
 {
     public class Constants
     {
-        public const string PassThroughMediaFeatureName = "Moov2.Orchard.Azure.Media.PassThrough";
+        public const string PassThroughMediaFeatureName = "Moov2.Orchard.Azure.PassThrough";
     }
 }

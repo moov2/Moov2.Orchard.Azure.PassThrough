@@ -24,6 +24,7 @@ namespace Moov2.Orchard.Azure.PassThrough.Controllers
             _storageProvider = storageProvider;
         }
 
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Index(string mediaPath)
         {
             mediaPath = _storageProvider.GetStoragePath(mediaPath);

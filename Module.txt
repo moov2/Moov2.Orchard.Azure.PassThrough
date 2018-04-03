@@ -2,7 +2,7 @@
 AntiForgery: enabled
 Author: Moov2
 Website: https://github.com/moov2/Moov2.Orchard.Azure.PassThrough
-Version: 0.1
+Version: 0.1.1
 OrchardVersion: 1.9.2
 Description: Enhances the Orchard.Azure module with additional security features using a pass-through approach
 Category: Hosting
